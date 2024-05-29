@@ -25,13 +25,12 @@ def read_profiles(profiles_ini):
     return profiles
 
 def choose_profile(profiles):
-    print("Profiles found:\n––––––––––––––––––––––––––––––")
+    print("Profiles found:\n")
     for i, (name, path, _) in enumerate(profiles):
         print(f"{i}: {name} ({path})")
-    print('––––––––––––––––––––––––––––––')
     while True:
         try:
-            index = int(input('Select the profile number: '))
+            index = int(input('\nSelect the profile number: '))
             if 0 <= index < len(profiles):
                 return profiles[index]
             else:
@@ -52,18 +51,15 @@ def update_userjs(profile_path):
     userjs_content = download_file(userjs_url)
     userjs_path = os.path.join(profile_path, 'user.js')
 
-    # Backup existing user.js
     if os.path.exists(userjs_path):
         backup_path = os.path.join(profile_path, f'user.js.backup.{tempfile.mktemp()}')
         shutil.copy(userjs_path, backup_path)
         print(f"Backup of existing user.js created at: {backup_path}")
 
-    # Write new user.js
     with open(userjs_path, 'w') as file:
         file.write(userjs_content)
     print("Updated user.js with the latest version.")
 
-    # Append user-overrides.js if it exists
     overrides_path = os.path.join(profile_path, 'user-overrides.js')
     if os.path.exists(overrides_path):
         with open(overrides_path, 'r') as overrides_file:
