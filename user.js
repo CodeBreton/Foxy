@@ -204,3 +204,4 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /*** CUSTOM ***/
 user_pref("browser.uidensity", 1);
+user_pref("browser.tabs.firefox-view", false);
