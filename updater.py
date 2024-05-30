@@ -6,10 +6,9 @@ import configparser
 import requests
 
 def get_profiles_ini():
-    # Chemins pour macOS et Linux
     paths = [
-        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),  # macOS
-        os.path.expanduser('~/.mozilla/firefox/profiles.ini')  # Linux
+        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),
+        os.path.expanduser('~/.mozilla/firefox/profiles.ini')
     ]
     for path in paths:
         if os.path.isfile(path):
