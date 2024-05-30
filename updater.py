@@ -6,9 +6,10 @@ import configparser
 import requests
 
 def get_profiles_ini():
+    # Chemins pour macOS et Linux
     paths = [
-        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),
-        os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),  # macOS
+        os.path.expanduser('~/.mozilla/firefox/profiles.ini')  # Linux
     ]
     for path in paths:
         if os.path.isfile(path):
@@ -46,15 +47,37 @@ def download_file(url):
         print(f"Error: Unable to download file from {url}")
         sys.exit(1)
 
+def compare_files(file1_content, file2_path):
+    if not os.path.exists(file2_path):
+        return False
+
+    with open(file2_path, 'r') as file:
+        file2_content = file.read()
+    
+    return file1_content == file2_content
+
 def update_userjs(profile_path):
     userjs_url = 'https://raw.githubusercontent.com/J0ssel1n/Foxy/main/user.js'
     userjs_content = download_file(userjs_url)
     userjs_path = os.path.join(profile_path, 'user.js')
 
     if os.path.exists(userjs_path):
-        backup_path = os.path.join(profile_path, f'user.js.backup.{tempfile.mktemp()}')
-        shutil.copy(userjs_path, backup_path)
-        print(f"Backup of existing user.js created at: {backup_path}")
+        if compare_files(userjs_content, userjs_path):
+            print("The downloaded user.js is identical to the existing one. No changes needed.")
+            return
+        else:
+            while True:
+                choice = input("An existing user.js file is found. Do you want to overwrite it? (yes/no): ").strip().lower()
+                if choice == 'yes':
+                    backup_path = os.path.join(profile_path, f'user.js.backup.{tempfile.mktemp()}')
+                    shutil.copy(userjs_path, backup_path)
+                    print(f"Backup of existing user.js created at: {backup_path}")
+                    break
+                elif choice == 'no':
+                    print("Operation cancelled.")
+                    return
+                else:
+                    print("Invalid choice. Please enter 'yes' or 'no'.")
 
     with open(userjs_path, 'w') as file:
         file.write(userjs_content)

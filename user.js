@@ -205,3 +205,12 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 /*** CUSTOM ***/
 user_pref("browser.uidensity", 1);
 user_pref("browser.tabs.firefox-view", false);
+user_pref("browser.startup.page", 0);
+user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.translations.automaticallyPopup", false);
+user_pref("browser.toolbars.bookmarks.visibility", "always");
+user_pref("security.dialog_enable_delay", 0);
+user_pref("accessibility.tabfocus", 3);
+user_pref("accessibility.blockautorefresh", true);
+user_pref("browser.download.useDownloadDir", false);
+user_pref("layout.spellcheckDefault", 0);
