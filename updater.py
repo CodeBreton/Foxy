@@ -69,7 +69,8 @@ def update_userjs(profile_path):
             while True:
                 choice = input("An existing user.js file is found. Do you want to overwrite it? (yes/no): ").strip().lower()
                 if choice == 'yes':
-                    backup_path = os.path.join(profile_path, f'user.js.backup.{tempfile.mktemp()}')
+                    with tempfile.NamedTemporaryFile(delete=False, dir=profile_path, prefix='user.js.backup.', suffix='') as temp_file:
+                        backup_path = temp_file.name
                     shutil.copy(userjs_path, backup_path)
                     print(f"Backup of existing user.js created at: {backup_path}")
                     break
@@ -82,16 +83,6 @@ def update_userjs(profile_path):
     with open(userjs_path, 'w') as file:
         file.write(userjs_content)
     print("Updated user.js with the latest version.")
-
-    overrides_path = os.path.join(profile_path, 'user-overrides.js')
-    if os.path.exists(overrides_path):
-        with open(overrides_path, 'r') as overrides_file:
-            with open(userjs_path, 'a') as userjs_file:
-                userjs_file.write('\n')
-                userjs_file.write(overrides_file.read())
-        print("Appended user-overrides.js to user.js.")
-    else:
-        print("No user-overrides.js file found.")
 
 def main():
     profiles_ini = get_profiles_ini()
