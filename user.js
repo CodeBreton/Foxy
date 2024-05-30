@@ -214,3 +214,4 @@ user_pref("accessibility.tabfocus", 3);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("layout.spellcheckDefault", 0);
+user_pref("browser.search.suggest.enabled", true);
