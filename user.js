@@ -214,4 +214,13 @@ user_pref("accessibility.tabfocus", 3);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("layout.spellcheckDefault", 0);
+user_pref("browser.search.separatePrivateDefault.ui.enabled", false);
 user_pref("browser.search.suggest.enabled", true);
+user_pref("browser.urlbar.suggest.topsites", false);
+user_pref("browser.urlbar.suggest.recentsearches", false)
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false)
+user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false)
+user_pref("browser.urlbar.suggest.history", false)
+user_pref("browser.urlbar.suggest.bookmark", false)
+user_pref("browser.urlbar.suggest.trending", false)
+user_pref("browser.urlbar.suggest.weather", false)

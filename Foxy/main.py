@@ -7,8 +7,9 @@ import requests
 
 def get_profiles_ini():
     paths = [
-        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),
-        os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),  # macOS
+        os.path.expanduser('~/.mozilla/firefox/profiles.ini'),  # Linux
+        os.path.join(os.environ['APPDATA'], 'Mozilla', 'Firefox', 'profiles.ini')  # Windows
     ]
     for path in paths:
         if os.path.isfile(path):
