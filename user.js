@@ -228,7 +228,6 @@ user_pref("browser.urlbar.suggest.pocket", false);
 user_pref("browser.urlbar.suggest.openpage", false);
 user_pref("browser.urlbar.suggest.mdn", false);
 user_pref("browser.urlbar.suggest.remotetab", false);
-
 user_pref("privacy.history.custom", false);
 user_pref("privacy.sanitize.sanitizeOnShutdown", false);
 user_pref("privacy.clearOnShutdown.history", false);
