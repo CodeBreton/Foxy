@@ -9,8 +9,11 @@ def get_profiles_ini():
     paths = [
         os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'),  # macOS
         os.path.expanduser('~/.mozilla/firefox/profiles.ini'),  # Linux
-        os.path.join(os.environ['APPDATA'], 'Mozilla', 'Firefox', 'profiles.ini')  # Windows
     ]
+    
+    if 'APPDATA' in os.environ:  # Only add the Windows path if APPDATA is in environment variables
+        paths.append(os.path.join(os.environ['APPDATA'], 'Mozilla', 'Firefox', 'profiles.ini'))  # Windows
+    
     for path in paths:
         if os.path.isfile(path):
             return path
