@@ -228,3 +228,12 @@ user_pref("browser.urlbar.suggest.pocket", false);
 user_pref("browser.urlbar.suggest.openpage", false);
 user_pref("browser.urlbar.suggest.mdn", false);
 user_pref("browser.urlbar.suggest.remotetab", false);
+
+user_pref("privacy.history.custom", false);
+user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+user_pref("privacy.clearOnShutdown.history", false);
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.sessions", false);
+user_pref("privacy.clearOnShutdown.offlineApps", false);
+user_pref("privacy.clearOnShutdown.siteSettings", false);
+user_pref("privacy.clearOnShutdown.cache", false);
